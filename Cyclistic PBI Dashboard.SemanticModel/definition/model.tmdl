@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["divvy_trips_finalrev"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table divvy_trips_finalrev
+ref table DateTableTemplate_c875cab9-85d9-4960-8a15-c7d43f8b3cd7
+ref table LocalDateTable_f2a142d9-8d59-49f5-9d1b-fd20679cf613
+ref table Calendar
+ref table LocalDateTable_e3962f93-49e9-4c09-95ac-dc7910e711d1
+ref table LocalDateTable_aa392171-e0c5-415e-b725-19a2bf9a33d8
+
+ref cultureInfo en-US
+

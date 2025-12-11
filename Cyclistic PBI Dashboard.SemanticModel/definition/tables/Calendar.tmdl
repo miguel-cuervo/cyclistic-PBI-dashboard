@@ -1,0 +1,55 @@
+table Calendar
+	lineageTag: e60eb781-6ef0-46fc-b9c7-3e18f49644d8
+
+	measure 'Total Trips' = COUNTROWS(divvy_trips_finalrev)
+		formatString: 0
+		lineageTag: ae4783c4-f223-4f35-b7b2-884c14eaf996
+
+	measure 'Avg Trip' = AVERAGE(divvy_trips_finalrev[ride_lenght_min])
+		lineageTag: 74b0f185-af90-426f-b78f-164a15a841c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Member Trips' = CALCULATE([Total Trips], 'divvy_trips_finalrev'[member_casual] = "member")
+		formatString: 0
+		lineageTag: f678b2ae-b366-4b86-9188-ef69fb8dea57
+
+	column Date
+		formatString: General Date
+		lineageTag: 76165017-8fcf-4df4-aa1e-1c9c38f87b2d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 7a105a7b-0ccb-4d34-be09-a66ee8700832
+			defaultHierarchy: LocalDateTable_e3962f93-49e9-4c09-95ac-dc7910e711d1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR('Calendar'[Date])
+		formatString: 0
+		lineageTag: dbf2582d-39d2-4a7c-b2c4-4fd916b758c6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('Calendar'[Date], "MMMM")
+		lineageTag: 261d5b2d-0717-44d6-9ca5-31baed401a03
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day = FORMAT([Date],"dddd")
+		lineageTag: 3482b591-2126-41c6-a539-f909619a875c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = calculated
+		mode: import
+		source = CALENDARAUTO()
+
+	annotation PBI_Id = 0c9ad0187ec746619aa8e4c04974af97
+

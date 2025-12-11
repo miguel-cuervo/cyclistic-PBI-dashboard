@@ -1,0 +1,202 @@
+table divvy_trips_finalrev
+	lineageTag: 0e9edbb5-802b-4d4e-aae1-9b5cbc1cf508
+
+	measure Casual% =
+			
+			VAR CasualTrips = CALCULATE([Total Trips], 'divvy_trips_finalrev'[member_casual] = "casual")
+			RETURN
+			DIVIDE(CasualTrips, [Total Trips], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 72bf7d1f-9cb6-4d36-94a4-523c4aa61e22
+
+	column Column1
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f58c689-5113-4728-9e16-4e6dcd1b9558
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ride_id
+		dataType: string
+		lineageTag: 17ca7008-21af-4454-a477-807930051ea2
+		summarizeBy: none
+		sourceColumn: ride_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rideable_type
+		dataType: string
+		lineageTag: ce404f7a-2bb8-4535-b80e-8931abc6d3ca
+		summarizeBy: none
+		sourceColumn: rideable_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column started_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: effb0d5c-a283-4f01-b22d-f08666486fd6
+		summarizeBy: none
+		sourceColumn: started_at
+
+		variation Variation
+			isDefault
+			relationship: 5570a7c7-836e-4b9c-a860-2a1e0cc7b0ee
+			defaultHierarchy: LocalDateTable_aa392171-e0c5-415e-b725-19a2bf9a33d8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ended_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 87bc2063-6e2b-4112-87b6-3883247f7ef5
+		summarizeBy: none
+		sourceColumn: ended_at
+
+		variation Variation
+			isDefault
+			relationship: ec9338c5-c103-4356-9fce-6753129d3f10
+			defaultHierarchy: LocalDateTable_f2a142d9-8d59-49f5-9d1b-fd20679cf613.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_station_name
+		dataType: string
+		lineageTag: cd1652d1-0232-41c5-833e-8e6c69bce09c
+		summarizeBy: none
+		sourceColumn: start_station_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_station_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 25493892-7bc6-4000-8156-b893e689ba7f
+		summarizeBy: sum
+		sourceColumn: start_station_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_station_name
+		dataType: string
+		lineageTag: 73d0fa45-bd14-44dc-8311-278443139b8e
+		summarizeBy: none
+		sourceColumn: end_station_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_station_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 88ddb3a5-c29a-41f1-854b-35f67f087363
+		summarizeBy: sum
+		sourceColumn: end_station_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_lat
+		dataType: double
+		lineageTag: f2accc3a-043d-4bbd-ab7d-cad49cbf6fc7
+		summarizeBy: sum
+		sourceColumn: start_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column start_lng
+		dataType: double
+		lineageTag: 0b5485fd-44ba-4cdd-84a4-677784eaca7c
+		summarizeBy: sum
+		sourceColumn: start_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column end_lat
+		dataType: double
+		lineageTag: 144f3d48-c820-45a3-973e-51405d85d70c
+		summarizeBy: sum
+		sourceColumn: end_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column end_lng
+		dataType: double
+		lineageTag: cb5ae8d1-0e5b-483d-88cf-c003eaebd632
+		summarizeBy: sum
+		sourceColumn: end_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column member_casual
+		dataType: string
+		lineageTag: d0e5b945-22b2-4e5b-ac81-bc0cd45b3129
+		summarizeBy: none
+		sourceColumn: member_casual
+
+		annotation SummarizationSetBy = Automatic
+
+	column ride_lenght_sec
+		dataType: int64
+		formatString: 0
+		lineageTag: ddda6741-f326-406a-98fd-de0423e750a8
+		summarizeBy: sum
+		sourceColumn: ride_lenght_sec
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: int64
+		formatString: 0
+		lineageTag: b55543f7-c38e-4b54-b155-33165be5ae39
+		summarizeBy: sum
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column ride_lenght_min
+		dataType: double
+		lineageTag: ac80a99a-dcb0-4b6e-9eff-9cd046549f55
+		summarizeBy: sum
+		sourceColumn: ride_lenght_min
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OnlyDate = DATE(YEAR('divvy_trips_finalrev'[started_at]), MONTH('divvy_trips_finalrev'[started_at]), DAY('divvy_trips_finalrev'[started_at]))
+		formatString: General Date
+		lineageTag: 6a46c701-2f72-4488-bc5e-c200d3e69579
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartHour = HOUR(divvy_trips_finalrev[started_at])
+		formatString: 0
+		lineageTag: 8f10c541-eb23-416e-8fb1-f609666c7f3f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition divvy_trips_finalrev = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\mcuer\OneDrive\Desktop\divvy_trips_finalrev.csv"),[Delimiter=",", Columns=17, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"ride_id", type text}, {"rideable_type", type text}, {"started_at", type datetime}, {"ended_at", type datetime}, {"start_station_name", type text}, {"start_station_id", Int64.Type}, {"end_station_name", type text}, {"end_station_id", Int64.Type}, {"start_lat", type number}, {"start_lng", type number}, {"end_lat", type number}, {"end_lng", type number}, {"member_casual", type text}, {"ride_lenght_sec", Int64.Type}, {"day_of_week", Int64.Type}, {"ride_lenght_min", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

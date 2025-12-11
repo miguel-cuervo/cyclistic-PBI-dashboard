@@ -1,0 +1,19 @@
+relationship ec9338c5-c103-4356-9fce-6753129d3f10
+	joinOnDateBehavior: datePartOnly
+	fromColumn: divvy_trips_finalrev.ended_at
+	toColumn: LocalDateTable_f2a142d9-8d59-49f5-9d1b-fd20679cf613.Date
+
+relationship 7a105a7b-0ccb-4d34-be09-a66ee8700832
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_e3962f93-49e9-4c09-95ac-dc7910e711d1.Date
+
+relationship 5570a7c7-836e-4b9c-a860-2a1e0cc7b0ee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: divvy_trips_finalrev.started_at
+	toColumn: LocalDateTable_aa392171-e0c5-415e-b725-19a2bf9a33d8.Date
+
+relationship 08471a63-b761-f9ed-22ac-1ec1c7082939
+	fromColumn: divvy_trips_finalrev.OnlyDate
+	toColumn: Calendar.Date
+
